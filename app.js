@@ -16,10 +16,10 @@ require("./config/dbConnection.js")();
 require("./config/passport.js")(passport);
 
 
-
+app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
 app.use(expressLayouts);
-app.use("/assets", express.static(__dirname + "/assets"));
+app.use("/assets", express.static(path.join(__dirname, "assets")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session({
