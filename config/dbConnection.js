@@ -3,7 +3,12 @@ const mongoose = require("mongoose");
 const connectDB = async() => {
 	try
 	{
-		const db = process.env.MONGO_URI="mongodb+srv://FoodShare:cycle2003@foodshare.7sq0u.mongodb.net/";
+		const db = process.env.MONGO_URI;
+		
+		if (!db) {
+      		console.error("MONGO_URI not found in .env file");
+      		process.exit(1);
+    	}
 		await mongoose.connect(db);
 		console.log("MongoDB connected...");
 	}

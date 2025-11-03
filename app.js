@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const passport = require("passport");
 const flash = require("connect-flash");
@@ -22,7 +23,7 @@ app.use("/assets", express.static(__dirname + "/assets"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session({
-	secret: "secret",
+	secret: process.env.SESSION_SECRET,
 	resave: true,
 	saveUninitialized: true
 }));
